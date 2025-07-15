@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prism Triangle</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #000;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: "Arial", sans-serif;
+      }
+
+      .container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+      }
+
+      .triangle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 173px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      .triangle::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        animation: glass-shimmer 4s ease-in-out infinite;
+      }
+
+      .prism-border {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 206px;
+        height: 179px;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        background: conic-gradient(
+          from 0deg,
+          #ff0080,
+          #ff4000,
+          #ff8000,
+          #ffff00,
+          #80ff00,
+          #00ff80,
+          #0080ff,
+          #4000ff,
+          #8000ff,
+          #ff0080
+        );
+        animation: rainbow-rotate 3s linear infinite,
+          border-pulse 2s ease-in-out infinite alternate;
+      }
+
+      .prism-border::before {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 200px;
+        height: 173px;
+        background: #000;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      }
+
+      .inner-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 180px;
+        height: 156px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 40%,
+          transparent 70%
+        );
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        animation: inner-pulse 4s ease-in-out infinite;
+      }
+
+      .sparkles {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        pointer-events: none;
+      }
+
+      .sparkle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: #fff;
+        border-radius: 50%;
+        animation: sparkle 2s ease-in-out infinite;
+      }
+
+      .sparkle:nth-child(1) {
+        top: 30%;
+        left: 40%;
+        animation-delay: 0s;
+      }
+      .sparkle:nth-child(2) {
+        top: 60%;
+        left: 70%;
+        animation-delay: 0.5s;
+      }
+      .sparkle:nth-child(3) {
+        top: 70%;
+        left: 30%;
+        animation-delay: 1s;
+      }
+      .sparkle:nth-child(4) {
+        top: 40%;
+        left: 60%;
+        animation-delay: 1.5s;
+      }
+      .sparkle:nth-child(5) {
+        top: 20%;
+        left: 50%;
+        animation-delay: 2s;
+      }
+
+      .light-rays {
+        position: absolute;
+        /* Position adjusted to match the circumcenter of the equilateral triangle */
+        /* For an equilateral triangle, the circumcenter is at the same point as the centroid */
+        /* which is at 1/3 of the height from the base */
+        top: calc(50% + 173px/6);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+            circle at center,
+            transparent 0%,
+            transparent 25%,
+            rgba(0, 0, 0, 0.3) 45%,
+            rgba(0, 0, 0, 1) 65%,
+            rgba(0, 0, 0, 1) 90%,
+            rgba(0, 0, 0, 1) 100%
+          ),
+          conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(255, 0, 128, 0.4) 30deg,
+            transparent 60deg,
+            rgba(0, 255, 128, 0.4) 120deg,
+            transparent 150deg,
+            rgba(0, 128, 255, 0.4) 210deg,
+            transparent 240deg,
+            rgba(255, 128, 0, 0.4) 300deg,
+            transparent 330deg
+          );
+        border-radius: 50%;
+        animation: ray-rotation 8s linear infinite;
+        opacity: 0.7;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.02);
+          filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.2));
+        }
+      }
+
+      @keyframes rainbow-rotate {
+        0% {
+          filter: hue-rotate(0deg) brightness(1);
+        }
+        50% {
+          filter: hue-rotate(180deg) brightness(1.5);
+        }
+        100% {
+          filter: hue-rotate(360deg) brightness(1);
+        }
+      }
+
+      @keyframes border-pulse {
+        0% {
+          opacity: 0.6;
+          transform: translate(-50%, -50%) scale(0.98);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.02);
+        }
+      }
+
+      @keyframes glass-shimmer {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: translateX(-20px);
+        }
+        50% {
+          opacity: 0.7;
+          transform: translateX(20px);
+        }
+      }
+
+      @keyframes inner-pulse {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: translate(-50%, -50%) scale(0.9);
+        }
+        50% {
+          opacity: 0.7;
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0);
+          filter: brightness(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.5);
+          filter: brightness(2) drop-shadow(0 0 6px #fff);
+        }
+      }
+
+      @keyframes ray-rotation {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      /* Ambient light effect */
+      body::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.03) 0%,
+          rgba(255, 255, 255, 0.015) 30%,
+          rgba(255, 255, 255, 0.005) 50%,
+          transparent 100%
+        );
+        animation: ambient-pulse 5s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      @keyframes ambient-pulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.1);
+          opacity: 0.6;
+        }
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .container {
+          width: 250px;
+          height: 250px;
+        }
+
+        .triangle {
+          width: 160px;
+          height: 138px;
+        }
+
+        .prism-border {
+          width: 166px;
+          height: 144px;
+        }
+
+        .prism-border::before {
+          width: 160px;
+          height: 138px;
+        }
+
+        .light-rays {
+          width: 400px;
+          height: 400px;
+          /* Adjust the position for responsive design as well */
+          top: calc(50% + 138px/6);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="light-rays"></div>
+      <div class="prism-border"></div>
+      <div class="triangle"></div>
+      <div class="inner-glow"></div>
+      <div class="sparkles">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+      </div>
+    </div>
+  </body>
+</html>
