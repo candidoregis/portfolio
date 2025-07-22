@@ -38,6 +38,12 @@
         backdrop-filter: blur(10px);
         clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
         filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+        overflow: hidden;
+        z-index: 5;
+      }
+
+      /* Remove pulse animation when transitioning */
+      .triangle:not(.transitioning) {
         animation: pulse 3s ease-in-out infinite;
       }
 
@@ -161,7 +167,7 @@
         /* Position adjusted to match the circumcenter of the equilateral triangle */
         /* For an equilateral triangle, the circumcenter is at the same point as the centroid */
         /* which is at 1/3 of the height from the base */
-        top: calc(50% + 173px/6);
+        top: calc(50% + 173px / 6);
         left: 50%;
         transform: translate(-50%, -50%);
         width: 500px;
@@ -306,6 +312,70 @@
         }
       }
 
+      #matrixCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.7; /* Adjust to blend with glass effect */
+        mix-blend-mode: screen; /* Helps blend with the glass effect */
+      }
+
+      .triangle-link {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        text-decoration: none;
+        z-index: 10;
+      }
+
+      .transition-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 1000;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      /* Ensure transitions work properly */
+      .transitioning {
+        will-change: transform, background-color;
+      }
+
+      .click-instruction {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        text-align: center;
+        font-weight: 300;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        animation: pulse-text 2s infinite ease-in-out;
+        pointer-events: none;
+        text-shadow: 0 0 10px rgba(0, 255, 70, 0.5);
+      }
+
+      @keyframes pulse-text {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
       /* Responsive design */
       @media (max-width: 768px) {
         .container {
@@ -332,24 +402,128 @@
           width: 400px;
           height: 400px;
           /* Adjust the position for responsive design as well */
-          top: calc(50% + 138px/6);
+          top: calc(50% + 138px / 6);
         }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="light-rays"></div>
-      <div class="prism-border"></div>
-      <div class="triangle"></div>
-      <div class="inner-glow"></div>
-      <div class="sparkles">
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
+      <div class="triangle-link" id="triangleLink">
+        <div class="light-rays"></div>
+        <div class="prism-border"></div>
+        <div class="triangle" id="mainTriangle">
+          <canvas id="matrixCanvas"></canvas>
+        </div>
+        <div class="inner-glow"></div>
+        <div class="sparkles">
+          <div class="sparkle"></div>
+          <div class="sparkle"></div>
+          <div class="sparkle"></div>
+          <div class="sparkle"></div>
+          <div class="sparkle"></div>
+        </div>
+        <div class="click-instruction">Click to Enter</div>
       </div>
+      <div class="transition-overlay" id="transitionOverlay"></div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const canvas = document.getElementById("matrixCanvas");
+        const triangle = document.querySelector(".triangle");
+        const triangleLink = document.getElementById("triangleLink");
+        const transitionOverlay = document.getElementById("transitionOverlay");
+        const ctx = canvas.getContext("2d");
+
+        // Add click event for transition
+        triangleLink.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Stop the pulse animation
+          triangle.classList.add("transitioning");
+
+          // Force a reflow to ensure styles are applied immediately
+          void triangle.offsetWidth;
+
+          // 1. Make the triangle white
+          triangle.style.transition = "background-color 0.3s ease-in-out";
+          triangle.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+
+          // 2. Scale the triangle to fill the screen
+          setTimeout(() => {
+            // Apply transform with a new transition
+            triangle.style.transition = "transform 0.8s ease-in-out";
+            triangle.style.transform = "translate(-50%, -50%) scale(20)";
+
+            // 3. Fade in the white overlay
+            setTimeout(() => {
+              transitionOverlay.style.opacity = "1";
+
+              // 4. Redirect to main page
+              setTimeout(() => {
+                window.location.href = "main.html";
+              }, 500);
+            }, 600);
+          }, 300);
+        });
+
+        // Set canvas size to match triangle dimensions
+        function resizeCanvas() {
+          canvas.width = triangle.offsetWidth;
+          canvas.height = triangle.offsetHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        // Matrix characters (using a mix of katakana, numbers, and symbols for the matrix effect)
+        const chars = "01";
+
+        // Create drops
+        const fontSize = 10;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = [];
+
+        // Initialize drops at random positions
+        for (let i = 0; i < columns; i++) {
+          drops[i] =
+            Math.floor((Math.random() * canvas.height) / fontSize) * -1;
+        }
+
+        // Drawing the matrix effect
+        function draw() {
+          // Semi-transparent black to create fade effect
+          ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          // Set the character style - green with varying opacity for glass effect
+          ctx.font = fontSize + "px monospace";
+
+          // Draw characters
+          for (let i = 0; i < drops.length; i++) {
+            // Random character
+            const text = chars[Math.floor(Math.random() * chars.length)];
+
+            // Varying green colors for matrix effect while maintaining glass look
+            const opacity = Math.random() * 0.5 + 0.2; // Lower opacity for glass effect
+            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+
+            // Draw the character
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            // Move drops down
+            drops[i]++;
+
+            // Reset drops when they reach bottom or randomly
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+              drops[i] = 0;
+            }
+          }
+        }
+
+        // Animation loop
+        setInterval(draw, 50);
+      });
+    </script>
   </body>
 </html>
