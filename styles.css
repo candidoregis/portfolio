@@ -641,7 +641,7 @@ footer {
 
 .timeline {
   position: relative;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -650,33 +650,80 @@ footer {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 20px;
+  left: 50%;
   width: 2px;
-  background-color: #e0e0e0;
+  background-color: var(--primary-color);
+  transform: translateX(-50%);
 }
 
 .timeline-item {
   position: relative;
-  padding-left: 60px;
   margin-bottom: 3rem;
+  width: 100%;
+  display: flex;
+}
+
+.timeline-left {
+  justify-content: flex-start;
+  padding-right: 50%;
+  padding-left: 0;
+}
+
+.timeline-right {
+  justify-content: flex-end;
+  padding-left: 50%;
+  padding-right: 0;
 }
 
 .timeline-dot {
   position: absolute;
-  left: 11px;
-  top: 5px;
+  left: 50%;
+  top: 34px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: var(--primary-color);
-  z-index: 1;
+  z-index: 2;
+  transform: translateX(-50%);
 }
 
 .timeline-content {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 1.5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  width: 90%;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
+}
+
+.timeline-left .timeline-content {
+  margin-right: 30px;
+}
+
+.timeline-right .timeline-content {
+  margin-left: 30px;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 42px;
+  height: 2px;
+  background-color: var(--primary-color);
+  z-index: 1;
+}
+
+.timeline-left .timeline-content::before {
+  right: -50px;
+  width: 50px;
+}
+
+.timeline-right .timeline-content::before {
+  left: -50px;
+  width: 50px;
 }
 
 .timeline-content h3 {
@@ -694,6 +741,24 @@ footer {
   font-style: italic;
   color: var(--text-light);
   margin-bottom: 1rem;
+}
+
+.timeline-type {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.academic .timeline-type {
+  color: #7fb5ff;
+}
+
+.professional .timeline-type {
+  color: #4a90e2;
 }
 
 .personal-section {

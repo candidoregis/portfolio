@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Quality Assurance</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <canvas id="backgroundMatrixCanvas"></canvas>
+
+    <main>
+      <header>
+        <nav>
+          <ul>
+            <li><a href="main.html">Main</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="ai.html">Artificial Intelligence</a></li>
+            <li class="active"><a href="qa.html">Quality Assurance</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Top image box -->
+      <section class="top-image-box">
+        <div class="container">
+          <div class="profile-image-container">
+            <!-- You can replace this with your actual image -->
+            <img
+              src="https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="QA Banner Image"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Main content section -->
+      <section class="nav-containers">
+        <div class="container">
+          <div class="content-wrapper">
+            <!-- QA Content -->
+    <section class="qa-hero">
+      <div class="qa-hero-content">
+        <h1>Quality Assurance</h1>
+        <p class="subtitle">Building reliability into every line of code</p>
+      </div>
+      <div class="qa-hero-visual">
+        <div class="qa-animation">
+          <!-- QA process animation will be handled by CSS/JS -->
+          <div class="qa-process">
+            <div class="process-step">
+              <div class="step-icon"><i class="fas fa-file-code"></i></div>
+              <div class="step-line"></div>
+            </div>
+            <div class="process-step">
+              <div class="step-icon"><i class="fas fa-vial"></i></div>
+              <div class="step-line"></div>
+            </div>
+            <div class="process-step">
+              <div class="step-icon"><i class="fas fa-bug"></i></div>
+              <div class="step-line"></div>
+            </div>
+            <div class="process-step">
+              <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qa-expertise">
+      <h2>QA Expertise</h2>
+      <div class="expertise-grid">
+        <div class="expertise-card">
+          <div class="expertise-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3>Test Automation</h3>
+          <p>Designing and implementing robust automated testing frameworks to ensure consistent quality.</p>
+          <ul class="tech-list">
+            <li>Selenium & Playwright</li>
+            <li>Cypress & TestCafe</li>
+            <li>JUnit & TestNG</li>
+            <li>Cucumber & BDD</li>
+          </ul>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <h3>Performance Testing</h3>
+          <p>Evaluating system performance under various conditions to identify bottlenecks and optimize response times.</p>
+          <ul class="tech-list">
+            <li>JMeter & Gatling</li>
+            <li>LoadRunner</li>
+            <li>K6 & Locust</li>
+            <li>New Relic & AppDynamics</li>
+          </ul>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Security Testing</h3>
+          <p>Identifying vulnerabilities and ensuring applications are protected against common security threats.</p>
+          <ul class="tech-list">
+            <li>OWASP Top 10</li>
+            <li>Penetration Testing</li>
+            <li>ZAP & Burp Suite</li>
+            <li>Threat Modeling</li>
+          </ul>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>CI/CD Integration</h3>
+          <p>Seamlessly integrating quality assurance into the continuous integration and delivery pipeline.</p>
+          <ul class="tech-list">
+            <li>Jenkins & GitHub Actions</li>
+            <li>GitLab CI/CD</li>
+            <li>CircleCI & Travis CI</li>
+            <li>Docker & Kubernetes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="qa-methodology">
+      <h2>QA Methodology</h2>
+      <div class="methodology-container">
+        <div class="methodology-visual">
+          <div class="methodology-cycle">
+            <div class="cycle-step step-1">
+              <div class="step-content">
+                <h3>Planning</h3>
+                <p>Define testing scope, strategy, and objectives</p>
+              </div>
+            </div>
+            <div class="cycle-step step-2">
+              <div class="step-content">
+                <h3>Design</h3>
+                <p>Create test cases and scenarios</p>
+              </div>
+            </div>
+            <div class="cycle-step step-3">
+              <div class="step-content">
+                <h3>Execution</h3>
+                <p>Run tests and collect results</p>
+              </div>
+            </div>
+            <div class="cycle-step step-4">
+              <div class="step-content">
+                <h3>Analysis</h3>
+                <p>Evaluate results and report issues</p>
+              </div>
+            </div>
+            <div class="cycle-step step-5">
+              <div class="step-content">
+                <h3>Improvement</h3>
+                <p>Refine process and implement lessons learned</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="methodology-description">
+          <p>My approach to quality assurance is comprehensive and adaptable, focusing on early detection of issues and continuous improvement of the testing process itself. I believe in shifting testing left in the development lifecycle, integrating quality checks from the requirements phase through to production monitoring.</p>
+          <p>By combining traditional testing methodologies with modern DevOps practices, I create efficient quality assurance workflows that scale with project complexity and deliver consistent results.</p>
+          <div class="methodology-highlights">
+            <div class="highlight-item">
+              <i class="fas fa-search"></i>
+              <span>Risk-Based Testing</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-chart-line"></i>
+              <span>Data-Driven Decisions</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-sync-alt"></i>
+              <span>Continuous Testing</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-users"></i>
+              <span>Collaborative Approach</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qa-projects">
+      <h2>QA Projects</h2>
+      <div class="project-showcase">
+        <div class="project-item">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+          </div>
+          <div class="project-details">
+            <h3>Enterprise Test Automation Framework</h3>
+            <p>Designed and implemented a comprehensive test automation framework for a large financial institution, covering web, mobile, and API testing.</p>
+            <div class="tech-tags">
+              <span>Java</span>
+              <span>Selenium</span>
+              <span>Appium</span>
+              <span>REST Assured</span>
+            </div>
+            <div class="project-results">
+              <h4>Results:</h4>
+              <ul>
+                <li>Reduced regression testing time by 75%</li>
+                <li>Increased test coverage from 60% to 92%</li>
+                <li>Decreased production defects by 45%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-item">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+          </div>
+          <div class="project-details">
+            <h3>Performance Testing Initiative</h3>
+            <p>Led a performance testing initiative for a high-traffic e-commerce platform, identifying and resolving critical bottlenecks before the holiday shopping season.</p>
+            <div class="tech-tags">
+              <span>JMeter</span>
+              <span>Grafana</span>
+              <span>InfluxDB</span>
+              <span>AWS CloudWatch</span>
+            </div>
+            <div class="project-results">
+              <h4>Results:</h4>
+              <ul>
+                <li>Improved system throughput by 300%</li>
+                <li>Reduced average response time from 2.5s to 0.8s</li>
+                <li>Successfully handled 5x normal traffic during peak season</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-item">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+          </div>
+          <div class="project-details">
+            <h3>Security Testing Program</h3>
+            <p>Established a comprehensive security testing program for a healthcare application, ensuring compliance with HIPAA regulations and protection of sensitive patient data.</p>
+            <div class="tech-tags">
+              <span>OWASP ZAP</span>
+              <span>Burp Suite</span>
+              <span>Nessus</span>
+              <span>Python</span>
+            </div>
+            <div class="project-results">
+              <h4>Results:</h4>
+              <ul>
+                <li>Identified and remediated 24 critical security vulnerabilities</li>
+                <li>Achieved 100% compliance with security requirements</li>
+                <li>Implemented automated security scanning in CI/CD pipeline</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qa-tools">
+      <h2>Tools & Technologies</h2>
+      <div class="tools-grid">
+        <div class="tool-category">
+          <h3>Test Automation</h3>
+          <div class="tools-list">
+            <span class="tool-item">Selenium</span>
+            <span class="tool-item">Cypress</span>
+            <span class="tool-item">Playwright</span>
+            <span class="tool-item">Appium</span>
+            <span class="tool-item">TestNG</span>
+            <span class="tool-item">Mocha</span>
+            <span class="tool-item">Jest</span>
+            <span class="tool-item">Robot Framework</span>
+          </div>
+        </div>
+        <div class="tool-category">
+          <h3>Performance Testing</h3>
+          <div class="tools-list">
+            <span class="tool-item">JMeter</span>
+            <span class="tool-item">Gatling</span>
+            <span class="tool-item">K6</span>
+            <span class="tool-item">LoadRunner</span>
+            <span class="tool-item">Locust</span>
+            <span class="tool-item">Artillery</span>
+          </div>
+        </div>
+        <div class="tool-category">
+          <h3>CI/CD & DevOps</h3>
+          <div class="tools-list">
+            <span class="tool-item">Jenkins</span>
+            <span class="tool-item">GitHub Actions</span>
+            <span class="tool-item">GitLab CI</span>
+            <span class="tool-item">Docker</span>
+            <span class="tool-item">Kubernetes</span>
+            <span class="tool-item">Terraform</span>
+          </div>
+        </div>
+        <div class="tool-category">
+          <h3>Test Management</h3>
+          <div class="tools-list">
+            <span class="tool-item">Jira</span>
+            <span class="tool-item">TestRail</span>
+            <span class="tool-item">qTest</span>
+            <span class="tool-item">Zephyr</span>
+            <span class="tool-item">Azure DevOps</span>
+          </div>
+        </div>
+      </div>
+    </section>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <p><i class="fas fa-envelope"></i> candidorbb@gmail.com</p>
+            <p><i class="fas fa-phone"></i> (647) 632-2299</p>
+          </div>
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <div class="social-links">
+              <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-medium"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Navigation</h4>
+            <nav class="footer-nav">
+              <div class="nav-row">
+                <a href="main.html">Main</a>
+                <a href="about.html">About</a>
+              </div>
+              <div class="nav-row">
+                <a href="ai.html">AI</a>
+                <a href="qa.html">QA</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
