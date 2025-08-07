@@ -331,6 +331,28 @@
         text-decoration: none;
         z-index: 10;
       }
+      
+      .greeting-text {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 48px;
+        font-weight: 300;
+        text-align: center;
+        z-index: 20;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        animation: pulse-text 2s infinite ease-in-out;
+        pointer-events: none;
+        text-shadow: 0 0 10px rgba(0, 255, 70, 0.5);
+        white-space: nowrap;
+      }
+      
+      .greeting-text .highlight {
+        color: #0080ff;
+      }
 
       .transition-overlay {
         position: fixed;
@@ -352,11 +374,11 @@
 
       .click-instruction {
         position: absolute;
-        bottom: 20px;
+        bottom: -20px;
         left: 50%;
         transform: translateX(-50%);
         color: rgba(255, 255, 255, 0.7);
-        font-size: 14px;
+        font-size: 20px;
         text-align: center;
         font-weight: 300;
         letter-spacing: 2px;
@@ -364,6 +386,17 @@
         animation: pulse-text 2s infinite ease-in-out;
         pointer-events: none;
         text-shadow: 0 0 10px rgba(0, 255, 70, 0.5);
+        width: 100%;
+      }
+      
+      .click-line1 {
+        display: block;
+        margin-bottom: 5px;
+      }
+      
+      .click-line2 {
+        display: block;
+        white-space: nowrap;
       }
 
       @keyframes pulse-text {
@@ -409,6 +442,7 @@
   </head>
   <body>
     <div class="container">
+      <div class="greeting-text">Hello, I'm <span class="highlight">Candido</span></div>
       <div class="triangle-link" id="triangleLink">
         <div class="light-rays"></div>
         <div class="prism-border"></div>
@@ -423,7 +457,10 @@
           <div class="sparkle"></div>
           <div class="sparkle"></div>
         </div>
-        <div class="click-instruction">Click to Enter</div>
+        <div class="click-instruction">
+          <span class="click-line1">Click here</span>
+          <span class="click-line2">and check my portfolio</span>
+        </div>
       </div>
       <div class="transition-overlay" id="transitionOverlay"></div>
     </div>
@@ -438,6 +475,9 @@
         // Add click event for transition
         triangleLink.addEventListener("click", function (e) {
           e.preventDefault();
+          
+          // Hide the greeting text immediately when clicked - no transition
+          document.querySelector(".greeting-text").style.display = "none";
 
           // Stop the pulse animation
           triangle.classList.add("transitioning");
@@ -461,7 +501,7 @@
 
               // 4. Redirect to main page
               setTimeout(() => {
-                window.location.href = "main.html";
+                window.location.href = "pages/main.html";
               }, 500);
             }, 600);
           }, 300);

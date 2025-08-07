@@ -106,9 +106,40 @@ section {
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.banner-text {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  color: white;
+  font-family: 'Pacifico', 'Brush Script MT', cursive;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-main);
+  font-size: 12rem;
+  font-weight: 500;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  letter-spacing: 2px;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .btn {
@@ -611,8 +642,8 @@ footer {
 
 .profile-image {
   flex: 1;
-  min-width: 250px;
-  max-width: 350px;
+  min-width: 225px;
+  max-width: 300px;
 }
 
 .profile-placeholder {
@@ -623,6 +654,22 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.profile-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary-color);
+  box-shadow: var(--box-shadow);
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .profile-placeholder i {
@@ -762,7 +809,6 @@ footer {
 }
 
 .personal-section {
-  background-color: #f5f5f5;
   text-align: center;
 }
 
@@ -778,11 +824,14 @@ footer {
   flex: 1;
   min-width: 250px;
   max-width: 350px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
   padding: 2rem;
   box-shadow: var(--box-shadow);
   transition: var(--transition);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
 }
 
 .philosophy-item:hover {
@@ -799,12 +848,83 @@ footer {
   text-align: center;
 }
 
+.interests-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.interests-text-container {
+  flex: 2;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.interests-text {
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.interests-photos {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  position: relative;
+  height: 350px;
+}
+
+.photo-bubble {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary-color);
+  box-shadow: var(--box-shadow);
+}
+
+.photo-bubble img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.photo-bubble-1 {
+  width: 180px;
+  height: 180px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.photo-bubble-2 {
+  width: 150px;
+  height: 150px;
+  bottom: 30px;
+  left: 20px;
+  z-index: 2;
+}
+
+.photo-bubble-3 {
+  width: 130px;
+  height: 130px;
+  bottom: 60px;
+  right: 20px;
+  z-index: 1;
+}
+
 .interests-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .interest-item {
@@ -812,7 +932,8 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  width: 100px;
+  width: 80px;
+  margin-bottom: 0.5rem;
 }
 
 .interest-item i {
@@ -885,11 +1006,14 @@ footer {
 }
 
 .expertise-card {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
   padding: 2rem;
   box-shadow: var(--box-shadow);
   transition: var(--transition);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
 }
 
 .expertise-card:hover {
@@ -930,20 +1054,28 @@ footer {
 
 .project-item {
   display: flex;
-  flex-wrap: wrap;
-  background-color: white;
+  flex-wrap: nowrap;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--box-shadow);
   margin-bottom: 3rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  min-height: 400px;
+  color: var(--text-color);
+  position: relative;
 }
 
 .project-image {
-  flex: 1;
+  width: 300px;
   min-width: 300px;
-  height: 300px;
   background-color: #eee;
   position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  height: auto;
 }
 
 .project-placeholder {
@@ -953,6 +1085,11 @@ footer {
   align-items: center;
   justify-content: center;
   background-color: rgba(74, 144, 226, 0.05);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .project-placeholder i {
@@ -983,9 +1120,11 @@ footer {
 
 .project-results {
   margin-top: 1.5rem;
-  background-color: #f9f9f9;
+  background-color: rgba(255, 255, 255, 0.25);
   padding: 1rem;
   border-radius: var(--border-radius);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(5px);
 }
 
 .project-results h4 {
@@ -996,6 +1135,7 @@ footer {
 .project-results ul {
   padding-left: 1.5rem;
   list-style-type: disc;
+  color: var(--text-color);
 }
 
 .research-list {
@@ -1003,11 +1143,14 @@ footer {
 }
 
 .research-item {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
   padding: 2rem;
   box-shadow: var(--box-shadow);
   margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
 }
 
 .publication-info {
@@ -1157,11 +1300,14 @@ footer {
 }
 
 .tool-item {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: var(--transition);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
 }
 
 .tool-item:hover {

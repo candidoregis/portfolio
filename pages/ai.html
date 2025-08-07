@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Artificial Intelligence</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <canvas id="backgroundMatrixCanvas"></canvas>
+
+    <main>
+      <header>
+        <nav>
+          <ul>
+            <li><a href="main.html">Main</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li class="active">
+              <a href="ai.html">Artificial Intelligence</a>
+            </li>
+            <li><a href="qa.html">Quality Assurance</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main content section -->
+      <section class="nav-containers">
+        <div class="container">
+          <div class="content-wrapper">
+            <!-- AI Content -->
+            <section class="ai-hero">
+              <div class="ai-hero-content">
+                <h1>Artificial Intelligence</h1>
+                <p class="subtitle">
+                  Exploring the frontiers of machine intelligence
+                </p>
+              </div>
+              <div class="ai-hero-visual">
+                <div class="neural-network-animation">
+                  <!-- Neural network animation will be handled by CSS/JS -->
+                  <div class="node-layer input-layer">
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                  </div>
+                  <div class="node-layer hidden-layer">
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                  </div>
+                  <div class="node-layer output-layer">
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="ai-expertise">
+              <h2>AI Expertise</h2>
+              <div class="expertise-grid">
+                <div class="expertise-card">
+                  <div class="expertise-icon">
+                    <i class="fas fa-brain"></i>
+                  </div>
+                  <h3>Machine Learning</h3>
+                  <p>
+                    Developing supervised and unsupervised learning models to
+                    extract insights from complex datasets.
+                  </p>
+                  <ul class="tech-list">
+                    <li>Regression & Classification</li>
+                    <li>Decision Trees & Random Forests</li>
+                    <li>Support Vector Machines</li>
+                    <li>Clustering Algorithms</li>
+                  </ul>
+                </div>
+                <div class="expertise-card">
+                  <div class="expertise-icon">
+                    <i class="fas fa-network-wired"></i>
+                  </div>
+                  <h3>Deep Learning</h3>
+                  <p>
+                    Building and optimizing neural networks for complex pattern
+                    recognition tasks.
+                  </p>
+                  <ul class="tech-list">
+                    <li>Convolutional Neural Networks</li>
+                    <li>Recurrent Neural Networks</li>
+                    <li>Transformers</li>
+                    <li>GANs & Autoencoders</li>
+                  </ul>
+                </div>
+                <div class="expertise-card">
+                  <div class="expertise-icon">
+                    <i class="fas fa-comment-dots"></i>
+                  </div>
+                  <h3>Natural Language Processing</h3>
+                  <p>
+                    Creating systems that understand, interpret, and generate
+                    human language.
+                  </p>
+                  <ul class="tech-list">
+                    <li>Sentiment Analysis</li>
+                    <li>Named Entity Recognition</li>
+                    <li>Text Classification</li>
+                    <li>Language Generation</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section id="ai-projects" class="ai-projects">
+              <h2>AI Projects</h2>
+              <div class="project-showcase">
+                <div class="project-item">
+                  <div class="project-image">
+                    <div class="project-placeholder">
+                      <i class="fas fa-robot"></i>
+                    </div>
+                  </div>
+                  <div class="project-details">
+                    <h3>Amazon Review Scraper and Sentiment Analysis</h3>
+                    <p>
+                      Developed a web scraper to collect Amazon reviews of a
+                      productand used natural language processing to analyze the
+                      sentiment of the reviews. Returning to the user a positive
+                      or negative sentiment analysis, and offering suggestions
+                      of cheaper or alternative products based on the analysis.
+                    </p>
+                    <div class="tech-tags">
+                      <span>Python</span>
+                      <span>NLP</span>
+                      <span>Scikit-learn</span>
+                      <span>Selenium</span>
+                      <span>SerpAPI</span>
+                      <span>TensorFlow/Keras</span>
+                      <span>Streamlit</span>
+                    </div>
+                    <div class="project-results">
+                      <h4>Results:</h4>
+                      <ul>
+                        <li>
+                          Able to scrape Amazon reviews, although the company
+                          has anti-scraping measures.
+                        </li>
+                        <li>
+                          Successfully analyzed the sentiment of the reviews.
+                        </li>
+                        <li>
+                          Offered great options to the user based on the
+                          analysis.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-item">
+                  <div class="project-image">
+                    <div class="project-placeholder">
+                      <i class="fas fa-language"></i>
+                    </div>
+                  </div>
+                  <div class="project-details">
+                    <h3>Career Support System</h3>
+                    <p>
+                      The Career Support System is an AI-powered platform
+                      designed to assist job seekers and HR professionals
+                      through intelligent career insights and automation. The
+                      system integrates multiple AI-driven features into one
+                      seamless solution, improving job search efficiency, resume
+                      optimization, skill assessment, job market trend analysis,
+                      and employee retention insights.
+                    </p>
+                    <div class="tech-tags">
+                      <span>Scikit-learn</span>
+                      <span>BERT</span>
+                      <span>Hugging Face</span>
+                      <span>NLP</span>
+                      <span>HTML/CSS</span>
+                      <span>JavaScript</span>
+                      <span>Python</span>
+                    </div>
+                    <div class="project-results">
+                      <h4>Results:</h4>
+                      <ul>
+                        <li>
+                          Successfully retrieved key words from job
+                          descriptions.
+                        </li>
+                        <li>
+                          Chatbot was able to answer questions about the job
+                          database and offer job recommendations.
+                        </li>
+                        <li>Project still in development.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="ai-testing" class="project-item">
+                  <div class="project-image">
+                    <div class="project-placeholder">
+                      <i class="fas fa-vial"></i>
+                    </div>
+                  </div>
+                  <div class="project-details">
+                    <h3>AI-Powered Testing Framework</h3>
+                    <p>
+                      Designed an intelligent testing system that uses machine
+                      learning to prioritize tests, predict failure points, and
+                      automatically generate test cases.
+                    </p>
+                    <div class="tech-tags">
+                      <span>Python</span>
+                      <span>Keras</span>
+                      <span>Selenium</span>
+                      <span>Docker</span>
+                    </div>
+                    <div class="project-results">
+                      <h4>Results:</h4>
+                      <ul>
+                        <li>Reduced testing time by 65%</li>
+                        <li>Increased test coverage by 40%</li>
+                        <li>Automated generation of 75% of test cases</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- AI Research section hidden for now, will be used later -->
+            <section class="ai-research" style="display: none;">
+              <h2>Research & Publications</h2>
+              <div class="research-list">
+                <div class="research-item">
+                  <h3>Optimizing Neural Networks for Edge Devices</h3>
+                  <p class="publication-info">
+                    Journal of Machine Learning Research, 2024
+                  </p>
+                  <p>
+                    Explored techniques for compressing and optimizing neural
+                    networks to run efficiently on resource-constrained edge
+                    devices without significant accuracy loss.
+                  </p>
+                  <a href="#" class="btn small">Read Paper</a>
+                </div>
+                <div class="research-item">
+                  <h3>Transfer Learning in Low-Resource Environments</h3>
+                  <p class="publication-info">
+                    International Conference on Machine Learning, 2023
+                  </p>
+                  <p>
+                    Investigated methods for applying transfer learning
+                    techniques to domains with limited labeled data, achieving
+                    state-of-the-art results.
+                  </p>
+                  <a href="#" class="btn small">Read Paper</a>
+                </div>
+                <div class="research-item">
+                  <h3>Explainable AI for Critical Systems</h3>
+                  <p class="publication-info">AI Safety Conference, 2022</p>
+                  <p>
+                    Developed frameworks for making AI systems more transparent
+                    and explainable, particularly for applications in healthcare
+                    and finance.
+                  </p>
+                  <a href="#" class="btn small">Read Paper</a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <p><i class="fas fa-envelope"></i> candidorbb@gmail.com</p>
+            <p><i class="fas fa-phone"></i> (647) 632-2299</p>
+          </div>
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <div class="social-links">
+              <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-medium"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Navigation</h4>
+            <nav class="footer-nav">
+              <div class="nav-row">
+                <a href="main.html">Main</a>
+                <a href="about.html">About</a>
+              </div>
+              <div class="nav-row">
+                <a href="ai.html">AI</a>
+                <a href="qa.html">QA</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="../js/scripts.js"></script>
+  </body>
+</html>
